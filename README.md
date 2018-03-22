@@ -36,14 +36,3 @@ The Multimedia app is basic blog with video
 
 ## Installation Guide
 
-Take a look at our wiki page for a detailed [installation guide][3].
-
-
-## Demo
-
-Try Bootcamp now at [http://trybootcamp.vitorfs.com][2].
-
-[0]: https://www.python.org/
-[1]: https://www.djangoproject.com/
-[2]: http://trybootcamp.vitorfs.com/
-[3]: https://github.com/vitorfs/bootcamp/wiki/Installing-and-Running-Bootcamp
