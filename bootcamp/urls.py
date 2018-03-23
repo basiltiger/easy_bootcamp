@@ -7,7 +7,7 @@ from bootcamp.activities import views as activities_views
 from bootcamp.authentication import views as bootcamp_auth_views
 from bootcamp.core import views as core_views
 from bootcamp.search import views as search_views
-from bootcamp.wiki.urls import get_pattern as get_wiki_pattern
+#from bootcamp.wiki.urls import get_pattern as get_wiki_pattern
 from django_nyt.urls import get_pattern as get_notify_pattern
 
 urlpatterns = [
@@ -30,7 +30,7 @@ urlpatterns = [
     url(r'^articles/', include('bootcamp.articles.urls')),
     url(r'^multimedias/', include('bootcamp.multimedia.urls')),
     url(r'^messages/', include('bootcamp.messenger.urls')),
-    url(r'^wiki/', get_wiki_pattern(), name='wiki'),
+   # url(r'^wiki/', get_wiki_pattern(), name='wiki'),
     url(r'^notify/', get_notify_pattern()),
     url(r'^notifications/$', activities_views.notifications,
         name='notifications'),

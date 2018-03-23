@@ -108,7 +108,7 @@
                 <li><a href="{% url 'questions' %}">{% trans 'Q&R' %}</a></li>
                 <li><a href="{% url 'network' %}">{% trans 'Réseau' %}</a></li>
                 <li><a href="{% url 'inbox' %}">Inbox  <span class="badge" id="unread-count">0</span></a></li>
-                <li> <a class="navbar-brand" href="{% url 'wiki:root' %}">WIKI</a></li>
+  
               </ul>
               <ul class="nav navbar-nav navbar-right"> -->
                 <!-- JQuery code for Ajax autocomplete search suggestion -->
@@ -161,9 +161,6 @@
                         <li id="menu-item-17855" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-17855">
                              <a href="{% url 'multimedias' %}">{% trans 'Multimedias' %}</a>
                         </li>
-                        <li id="menu-item-17841" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-17841">
-                             <a href="{% url 'wiki:root' %}">{% trans 'WIKI' %}</a>
-                        </li>
                         
               </ul>
                     </ul>
@@ -213,9 +210,7 @@
                 </div> -->
                 <div class="nav-wrap container" style="background-color: #3b8dbd;">
                     <ul id="menu-navigation" class="nav container-inner group">
-                         <li id="menu-item-19018" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children menu-item-19018">
-                              <a href="{% url 'wiki:root' %}" target="_blank">{% trans 'WIKI' %}</a>
-                        </li>
+                         
                         <li id="menu-item-19018" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children menu-item-19018">
                               <a href="{% url 'articles' %}">{% trans 'ARTICLES' %}</a>
                         </li>

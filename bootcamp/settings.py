@@ -21,7 +21,7 @@ DATABASES = {
 }
 
 #ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-ALLOWED_HOSTS=['127.0.0.1','localhost','192.168.1.5']
+ALLOWED_HOSTS=['172.16.0.40:8000']
 # Application definition
 
 INSTALLED_APPS = (
@@ -34,17 +34,16 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.sites',
 
-    'django_python3_ldap',
-    'ldap_sync',
-
-    'bootcamp.wiki.apps.WikiConfig',
-    'bootcamp.wiki.plugins.macros',
-    'bootcamp.wiki.plugins.help',
-    'bootcamp.wiki.plugins.links',
-    'wiki.plugins.images',
-    'wiki.plugins.attachments',
-    'wiki.plugins.notifications',
-    'wiki.plugins.globalhistory',
+    #'django_python3_ldap',
+    #'ldap_sync',
+    #'wiki',
+    #'bootcamp.wiki.plugins.macros',
+    #'bootcamp.wiki.plugins.help',
+    #'bootcamp.wiki.plugins.links',
+    #'bootcamp.wiki.plugins.images',
+    #'bootcamp.wiki.plugins.attachments',
+    #'bootcamp.wiki.plugins.notifications',
+    #'bootcamp.wiki.plugins.globalhistory',
     'sekizai',
     'sorl.thumbnail',
     'django_nyt',
@@ -61,8 +60,8 @@ INSTALLED_APPS = (
     'bootcamp.questions',
     'bootcamp.search',
     'taggit',
-    'embed_video',
-    
+    'embed_video',  
+    'gunicorn',  
 )
 SITE_ID = 1
 # AUTH_USER_MODEL = 'authentificate.CustomUser'
@@ -123,7 +122,7 @@ TEMPLATES = [
 # from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
 
 AUTHENTICATION_BACKENDS = [
-    'django_python3_ldap.auth.LDAPBackend',
+    #'django_python3_ldap.auth.LDAPBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 # The URL of the LDAP server.
@@ -155,23 +154,23 @@ LDAP_AUTH_USER_LOOKUP_FIELDS = ("username",)
 # Path to a callable that takes a dict of {model_field_name: value},
 # returning a dict of clean model data.
 # Use this to customize how data loaded from LDAP is saved to the User model.
-LDAP_AUTH_CLEAN_USER_DATA = "django_python3_ldap.utils.clean_user_data"
+#LDAP_AUTH_CLEAN_USER_DATA = "django_python3_ldap.utils.clean_user_data"
 
 # Path to a callable that takes a user model and a dict of {ldap_field_name: [value]},
 # and saves any additional user relationships based on the LDAP data.
 # Use this to customize how data loaded from LDAP is saved to User model relations.
 # For customizing non-related User model fields, use LDAP_AUTH_CLEAN_USER_DATA.
-LDAP_AUTH_SYNC_USER_RELATIONS = "django_python3_ldap.utils.sync_user_relations"
+#"LDAP_AUTH_SYNC_USER_RELATIONS = "django_python3_ldap.utils.sync_user_relations"
 
 # Path to a callable that takes a dict of {ldap_field_name: value},
 # returning a list of [ldap_search_filter]. The search filters will then be AND'd
 # together when creating the final search filter.
-LDAP_AUTH_FORMAT_SEARCH_FILTERS = "django_python3_ldap.utils.format_search_filters"
+#LDAP_AUTH_FORMAT_SEARCH_FILTERS = "django_python3_ldap.utils.format_search_filters"
 
 # Path to a callable that takes a dict of {model_field_name: value}, and returns
 # a string of the username to bind to the LDAP server.
 # Use this to support different types of LDAP server.
-LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_openldap"
+#LDAP_AUTH_FORMAT_USERNAME = "django_python3_ldap.utils.format_username_openldap"
 
 # Sets the login domain for Active Directory users.
 # LDAP_AUTH_ACTIVE_DIRECTORY_DOMAIN = "u:FEICOMDG\""
