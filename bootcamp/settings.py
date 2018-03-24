@@ -21,7 +21,7 @@ DATABASES = {
 }
 
 #ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-ALLOWED_HOSTS=['172.16.0.40:8000']
+ALLOWED_HOSTS=['192.168.1.5:8000','192.168.1.5']
 # Application definition
 
 INSTALLED_APPS = (
