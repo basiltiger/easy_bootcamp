@@ -25,8 +25,8 @@
       {{ multimedia.create_date }}
     </span>
     <span class="user">
-      <a href="{% url 'profile' multimedia.create_user.username %}"><img src="{{ multimedia.create_user.profile.get_picture }}"></a>
-      <a href="{% url 'profile' multimedia.create_user.username %}">{{ multimedia.create_user.profile.get_screen_name }}</a>
+      <a href="{% url 'profile' username=multimedia.create_user.username %}"><img src="{{ multimedia.create_user.profile.get_picture }}"></a>
+      <a href="{% url 'profile' username=multimedia.create_user.username %}">{{ multimedia.create_user.profile.get_screen_name }}</a>
     </span>
  
  
@@ -38,7 +38,7 @@
   <div class="content">
        <video id="my-video" class="video-js" controls preload="auto" width="780" height="704"
 data-setup="{}">
-    <source src="http://192.168.1.5:8000/media/{{multimedia.multimedia_link}}">
+    <source src="https://fsn.feicom.cm/media/{{multimedia.multimedia_link}}" type="video/mp4">
     <p class="vjs-no-js">
       To view this video please enable JavaScript, and consider upgrading to a web browser that
       <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>

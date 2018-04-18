@@ -7,14 +7,14 @@ from django.http import (HttpResponse, HttpResponseBadRequest,
 from django.shortcuts import get_object_or_404, render
 from django.template.context_processors import csrf
 from django.template.loader import render_to_string
-
+from django.views.decorators.csrf import csrf_protect
 from bootcamp.activities.models import Activity
 from bootcamp.decorators import ajax_required
 from bootcamp.feeds.models import Feed
 
 FEEDS_NUM_PAGES = 10
 
-
+@csrf_protect
 @login_required
 def feeds(request):
     all_feeds = Feed.get_feeds()
@@ -29,12 +29,12 @@ def feeds(request):
         'page': 1,
         })
 
-
+@csrf_protect
 def feed(request, pk):
     feed = get_object_or_404(Feed, pk=pk)
     return render(request, 'feeds/feed.html', {'feed': feed})
 
-
+@csrf_protect
 @login_required
 @ajax_required
 def load(request):
@@ -81,7 +81,7 @@ def _html_feeds(last_feed, user, csrf_token, feed_source='all'):
 
     return html
 
-
+@csrf_protect
 @login_required
 @ajax_required
 def load_new(request):
@@ -91,7 +91,7 @@ def load_new(request):
     html = _html_feeds(last_feed, user, csrf_token)
     return HttpResponse(html)
 
-
+@csrf_protect
 @login_required
 @ajax_required
 def check(request):
@@ -104,7 +104,7 @@ def check(request):
     count = feeds.count()
     return HttpResponse(count)
 
-
+@csrf_protect
 @login_required
 @ajax_required
 def post(request):
@@ -121,7 +121,7 @@ def post(request):
     html = _html_feeds(last_feed, user, csrf_token)
     return HttpResponse(html)
 
-
+@csrf_protect
 @login_required
 @ajax_required
 def like(request):
@@ -141,7 +141,7 @@ def like(request):
 
     return HttpResponse(feed.calculate_likes())
 
-
+@csrf_protect
 @login_required
 @ajax_required
 def comment(request):
@@ -165,7 +165,7 @@ def comment(request):
         return render(request, 'feeds/partial_feed_comments.html',
                       {'feed': feed})
 
-
+@csrf_protect
 @login_required
 @ajax_required
 def update(request):
@@ -181,7 +181,7 @@ def update(request):
     data = json.dumps(dump)
     return HttpResponse(data, content_type='application/json')
 
-
+@csrf_protect
 @login_required
 @ajax_required
 def track_comments(request):
@@ -194,7 +194,7 @@ def track_comments(request):
     else:
         return HttpResponse()
 
-
+@csrf_protect
 @login_required
 @ajax_required
 def remove(request):

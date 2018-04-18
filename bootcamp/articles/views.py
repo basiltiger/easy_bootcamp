@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -51,32 +52,32 @@ class EditArticle(LoginRequiredMixin, UpdateView):
     form_class = ArticleForm
     success_url = reverse_lazy('articles')
 
-
+@csrf_protect
 @login_required
 def articles(request):
     all_articles = Article.get_published()
     return _articles(request, all_articles)
 
-
+@csrf_protect
 @login_required
 def article(request, slug):
     article = get_object_or_404(Article, slug=slug, status=Article.PUBLISHED)
     return render(request, 'articles/article.html', {'article': article})
 
-
+@csrf_protect
 @login_required
 def tag(request, tag_name):
     articles = Article.objects.filter(tags__name=tag_name).filter(status='P')
     return _articles(request, articles)
 
-
+@csrf_protect
 @login_required
 def drafts(request):
     drafts = Article.objects.filter(create_user=request.user,
                                     status=Article.DRAFT)
     return render(request, 'articles/drafts.html', {'drafts': drafts})
 
-
+@csrf_protect
 @login_required
 @ajax_required
 def preview(request):
@@ -95,7 +96,7 @@ def preview(request):
     except Exception:   # pragma: no cover
         return HttpResponseBadRequest()
 
-
+@csrf_protect
 @login_required
 @ajax_required
 def comment(request):

@@ -1,16 +1,16 @@
 {% load i18n %}
 <hr>
-<span class="pull-right text-muted" id="comment-helper" style="display: none"><small>{% trans 'Press Ctrl + Enter to post' %}</small></span>
+<span class="pull-right text-muted" id="comment-helper_m" style="display: none"><small>{% trans 'Press Ctrl + Enter to post' %}</small></span>
 <h4><span class="comment-count">{{ multimedia.get_comments.count }}</span> {% trans 'Comments' %}</h4>
 <div class="post-comment clearfix">
-  <form role="form" id="comment-form">
+  <form role="form" id="comment-form_m">
     {% csrf_token %}
-    <input type="hidden" name="article" value="{{ multimedia.pk }}">
+    <input type="hidden" name="multimedia" value="{{ multimedia.pk }}">
     <div class="user-portrait clearfix">
       <img src="{{ user.profile.get_picture }}">
     </div>
     <div class="comment-input clearfix">
-      <textarea class="form-control" rows="1" placeholder="{% trans 'Write a comment...' %}" name="comment" id="comment"></textarea>
+      <textarea class="form-control" rows="1" placeholder="{% trans 'Write a comment...' %}" name="comment_m" id="comment_m"></textarea>
     </div>
   </form>
 </div>

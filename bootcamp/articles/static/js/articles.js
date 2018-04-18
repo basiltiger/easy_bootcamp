@@ -24,6 +24,37 @@ $(function () {
     });
   });
 
+  $("#comment_m").focus(function() {
+    $(this).attr('rows', "3");
+    $("#comment-helper_m").fadeIn();
+  });
+
+  $("#comment_m").blur(function () {
+    $(this).attr("rows", "1");
+    $("#comment-helper_m").fadeOut();
+  });
+
+
+  $("#comment_m").keydown(function (evt) {
+    var keyCode = evt.which?evt.which:evt.keyCode;
+    if (evt.ctrlKey && (keyCode == 10 || keyCode == 13)) {
+      $.ajax({
+        url: '/multimedias/comment_m/',
+        data: $("#comment-form_m").serialize(),
+        cache: false,
+        type: 'post',
+        success: function (data) {
+          $("#comment-list_m").html(data);
+          var comment_count = $("#comment-list_m .comment_m").length;
+          $(".comment-count_m").text(comment_count);
+          $("#comment_m").val("");
+          $("#comment_").blur();
+        }
+      });
+    }
+  });
+
+
   $("#comment").focus(function () {
     $(this).attr("rows", "3");
     $("#comment-helper").fadeIn();

@@ -7,9 +7,9 @@ urlpatterns = [
     # url(r'^$', views.articles, name='articles'),
     # url(r'^write/$', views.CreateArticle.as_view(), name='write'),
     # url(r'^preview/$', views.preview, name='preview'),
-     url(r'^drafts/$', views.drafts, name='drafts'),
+     url(r'^drafts_m/$', views.drafts, name='drafts_m'),
        url(r'^bloc_tag/(?P<bloc>.+)/$', views.bloc_tag, name='bloc_tag'),
-    # url(r'^comment/$', views.comment, name='comment'),
+    url(r'^comment_m/$', views.comment, name='comment_m'),
     
     # url(r'^edit/(?P<pk>\d+)/$',
     #     views.EditArticle.as_view(), name='edit_article'),

@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, UpdateView
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -62,23 +63,25 @@ class EditMultimedia(LoginRequiredMixin, UpdateView):
     form_class = MultimediaForm
     success_url = reverse_lazy('multimedias')
 
+@csrf_protect
 @login_required
 def multimedias(request):
     all_multimedias = Multimedia.get_published()
     return _multimedias(request, all_multimedias)
 
+@csrf_protect
 @login_required
 def multimedia(request, slug):
     multimedia = get_object_or_404(Multimedia, slug=slug, status=Multimedia.PUBLISHED)
     return render(request, 'multimedia/multimedia.html', {'multimedia': multimedia})
 
-
+@csrf_protect
 @login_required
 def bloc_tag(request, bloc):
     multimedias = Multimedia.objects.filter(bloc__slug=bloc).filter(status='P')
     return _multimedias(request, multimedias)
 
-
+@csrf_protect
 @login_required
 def drafts(request):
     drafts = Multimedia.objects.filter(create_user=request.user,
@@ -91,25 +94,27 @@ class EditBloc(LoginRequiredMixin, UpdateView):
     form_class = CategorieMediaForm
     success_url = reverse_lazy('blocs')
 
+@csrf_protect
 @login_required
 def blocs(request):
     all_blocs = CategorieMedia.objects.all()
     return _blocs(request, all_multimedias)
 
+@csrf_protect
 @login_required
 def bloc(request, slug):
     bloc = get_object_or_404(CategorieMedia, slug=slug)
     return render(request, 'multimedia/bloc.html', {'bloc': bloc})
     
-
+@csrf_protect
 @login_required
 @ajax_required
 def comment(request):
     try:
         if request.method == 'POST':
             multimedia_id = request.POST.get('multimedia')
-            multimedia = Multimedia.objects.get(pk=article_id)
-            comment = request.POST.get('comment')
+            multimedia = Multimedia.objects.get(pk=multimedia_id)
+            comment = request.POST.get('comment_m')
             comment = comment.strip()
             if len(comment) > 0:
                 multimedia_comment = MultimediaComment(user=request.user,

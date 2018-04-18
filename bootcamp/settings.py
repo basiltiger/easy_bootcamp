@@ -3,17 +3,16 @@ from decouple import Csv, config
 from unipath import Path
 import os
 
-
 PROJECT_DIR = Path(__file__).parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 SECRET_KEY = config('SECRET_KEY')
-
+#SECRET_KEY = "#12555^sdsds@dsd"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
-
+DEBUG = config('DEBUG', default=True, cast=bool)
+#APPEND_SLASH=False
 DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
@@ -21,9 +20,8 @@ DATABASES = {
 }
 
 #ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-ALLOWED_HOSTS=['192.168.1.5:8000','192.168.1.5']
+ALLOWED_HOSTS=['172.16.0.40']
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,13 +35,13 @@ INSTALLED_APPS = (
     #'django_python3_ldap',
     #'ldap_sync',
     'wiki',
-    'bootcamp.wiki.plugins.macros',
-    'bootcamp.wiki.plugins.help',
-    'bootcamp.wiki.plugins.links',
-    'bootcamp.wiki.plugins.images',
-    'bootcamp.wiki.plugins.attachments',
-    'bootcamp.wiki.plugins.notifications',
-    'bootcamp.wiki.plugins.globalhistory',
+    'wiki.plugins.macros',
+    'wiki.plugins.help',
+    'wiki.plugins.links',
+    'wiki.plugins.images',
+    'wiki.plugins.attachments',
+    'wiki.plugins.notifications',
+    'wiki.plugins.globalhistory',
     'sekizai',
     'sorl.thumbnail',
     'django_nyt',
@@ -277,3 +275,4 @@ TAGGIT_CASE_INSENSITIVE = True
 
 WIKI_ANONYMOUS_WRITE = True
 WIKI_ANONYMOUS_CREATE = False
+

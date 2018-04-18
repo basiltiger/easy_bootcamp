@@ -1,5 +1,8 @@
 body {
   background-color: #006389;
+  background: url('/static/img/immeuble.jpg') repeat;
+     color: white;
+  
 }
 
 .cover {
@@ -24,7 +27,7 @@ body {
 }
 
 .login {
-  background-color: #f6f6f6;
+  background-color: #1a3348;
   width: 100%;
   height: 330px;
   border-radius: 7px;
